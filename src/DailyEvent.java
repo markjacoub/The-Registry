@@ -9,7 +9,7 @@ public class DailyEvent extends AbstractEvent {
     private int calls;
     private final long daysInMilliSeconds = 86400000;
 
-    DailyEvent(String description, int recurrence, Date start, Date end) {
+    DailyEvent(String description, Date start, Date end, int recurrence) {
         super(description, start, end);
         this.recurrence = recurrence;
         this.calls = 0;
@@ -57,7 +57,7 @@ public class DailyEvent extends AbstractEvent {
 
     @Override
     public String toString() {
-        return "Description=" + getDescription() + ", startTime=" + getStart().toString() + ", endTime=" + getEnd().toString() +
-                ", numberOfOccurences= " + getRecurrence();
+        return ("Description=" + getDescription() + ", startTime=" + getStart().toString() + ", endTime=" + getEnd().toString() +
+                ", numberOfOccurences= " + getRecurrence());
     }
 }
