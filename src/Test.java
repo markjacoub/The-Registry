@@ -27,8 +27,9 @@ public class Test {
 
         start = Utils.getTime(2019, Calendar.JANUARY, 6, 8, 30);
         end = Utils.getTime(2019, Calendar.JANUARY, 6, 10, 0);
-        p.addEvent(new WeeklyEvent("CSCE 4321 Section B", start, end, limistart = Utils.getTime(2019, Calendar.JANUARY, 11, 10, 0)));
+        p.addEvent(new WeeklyEvent("CSCE 4321 Section B", start, end, limit));
 
+        start = Utils.getTime(2019, Calendar.JANUARY, 11, 10, 0);
         end = Utils.getTime(2019, Calendar.JANUARY, 11, 11, 30);
         p.addEvent(new WeeklyEvent("CSCE 1521 Section B", start, end, limit));
 
