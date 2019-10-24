@@ -1,4 +1,3 @@
-import javax.swing.text.Utilities;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -17,7 +16,7 @@ public class Test {
         Calendar cal;
         Date input, start, end, limit;
         DateFormat df;
-        df = new SimpleDateFormat("MMM d, yyyy", Locale.EGYPT);
+        df = new SimpleDateFormat("MMM d, yyyy", Locale.UK);
         input = df.parse(args[0]);
         p = new Planner(1000);
 
