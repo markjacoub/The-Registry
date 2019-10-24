@@ -20,9 +20,9 @@ public class Test {
         input = df.parse(args[0]);
         p = new Planner(1000);
         limit = Utils.getTime(2019, Calendar.APRIL, 8);
-        start = Utils.getTime(2019, Calendar.FEBRUARY, 21, 8, 30);
+        start = Utils.getTime(2019, Calendar.FEBRUARY, 21, 8, 30);//21:Day, 8:30
         end = Utils.getTime(2019, Calendar.FEBRUARY, 21, 22, 0);
-        p.addEvent(new DailyEvent("Study Break", start, end, 5));
+        p.addEvent(new DailyEvent("Study Break", start, end, 5));//5: recurrance
         start = Utils.getTime(2019, Calendar.JANUARY, 6, 8, 30);
         end = Utils.getTime(2019, Calendar.JANUARY, 6, 10, 0);
         p.addEvent(new WeeklyEvent("CSCE 4321 Section B", start, end, limistart = Utils.getTime(2019, Calendar.JANUARY, 11, 10, 0);
