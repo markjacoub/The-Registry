@@ -3,15 +3,18 @@ import java.util.Date;
 
 public abstract class AbstractEvent {
 
+    //Variable declarations
     private String description;
     private Date start ,end;
 
+    //Class Constructor
     AbstractEvent(String description, Date start, Date end) {
         this.description = description;
         this.start = start;
         this.end = end;
     }
 
+    //Getters and setters
     Date getStart() {
         return start;
     }
@@ -36,6 +39,7 @@ public abstract class AbstractEvent {
         this.end = end;
     }
 
+    //Abstract Functions to be implemented in Sub-classes
     public abstract Boolean hasMoreOccurences();
 
     public abstract Date nextOccurence();
