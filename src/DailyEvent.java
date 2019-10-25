@@ -38,11 +38,13 @@ public class DailyEvent extends AbstractEvent {
             return null; //undefined handler in case no more occurences exist
     }
 
+    //Resets call counter
     @Override
     public void init() {
         this.calls = 0;
     }
 
+    //Setters and getters
     public int getRecurrence() {
         return recurrence;
     }
@@ -60,6 +62,7 @@ public class DailyEvent extends AbstractEvent {
     }
 
 
+    //Returns string representation of event
     @Override
     public String toString() {
         return ("Description=" + getDescription() + ", startTime=" + getStart().toString() + ", endTime=" + getEnd().toString() +
