@@ -5,7 +5,7 @@ public abstract class AbstractEvent {
 
     //Variable declarations
     private String description;
-    private Date start ,end;
+    private Date start, end;
 
     //Class Constructor
     AbstractEvent(String description, Date start, Date end) {
@@ -45,4 +45,5 @@ public abstract class AbstractEvent {
     public abstract Date nextOccurence();
 
     public abstract void init();
+
 }

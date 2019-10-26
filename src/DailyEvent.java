@@ -8,7 +8,7 @@ public class DailyEvent extends AbstractEvent {
     //Variable Declarations
     private int recurrence;
     private int calls;
-    private final long daysInMilliSeconds = 86400000;
+    public static final long daysInMilliSeconds = 86400000;
 
     //Class Constructor
     DailyEvent(String description, Date start, Date end, int recurrence) {
@@ -44,10 +44,12 @@ public class DailyEvent extends AbstractEvent {
         this.calls = 0;
     }
 
-    //Setters and getters
+
     public int getRecurrence() {
         return recurrence;
     }
+
+    //Setters and getters
 
     public void setRecurrence(int recurrence) {
         this.recurrence = recurrence;
@@ -65,7 +67,15 @@ public class DailyEvent extends AbstractEvent {
     //Returns string representation of event
     @Override
     public String toString() {
-        return ("Description=" + getDescription() + ", startTime=" + getStart().toString() + ", endTime=" + getEnd().toString() +
-                ", numberOfOccurences= " + getRecurrence());
+        StringBuilder str;
+        str = new StringBuilder();
+        String format = "MMM dd, yyyy HH:mm";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format, new Locale("en", "EG"));
+
+        String date = simpleDateFormat.format(this.getStart());
+        str.append("Daily Event: {").append("Description= ").append(getDescription()).append(", startTime= ").append(date);
+        date = simpleDateFormat.format(this.getEnd());
+        str.append(", EndTime= ").append(date).append(", numberOdRecurrences= ").append(this.getRecurrence()).append("}");
+        return str.toString();
     }
 }
