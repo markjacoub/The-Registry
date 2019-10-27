@@ -8,29 +8,27 @@ public class LastOccComparator implements Comparator<AbstractEvent> {
     public int compare(AbstractEvent first, AbstractEvent second) {
         long firstEnd = 0, secondEnd = 0;
 
+        //Gets last occurence time based on whether the event is of type DailyEvent or Weekly Event
         if (first instanceof DailyEvent)
-            firstEnd = first.getEnd().getTime() + (((DailyEvent) first).getRecurrence() * DailyEvent.daysInMilliSeconds);
+            firstEnd = first.getStart().getTime() + (((DailyEvent) first).getRecurrence() * DailyEvent.daysInMilliSeconds);
         else if (first instanceof WeeklyEvent) {
             long limit = ((WeeklyEvent) first).getLimit().getTime();
-            firstEnd = first.getEnd().getTime();
-            while (firstEnd < limit) {
-                firstEnd += DailyEvent.daysInMilliSeconds;
+            firstEnd = first.getStart().getTime();
+            while (firstEnd + DailyEvent.daysInMilliSeconds * 7 < limit) {
+                firstEnd += DailyEvent.daysInMilliSeconds * 7;
             }
         }
-
 
         if (second instanceof DailyEvent)
-            secondEnd = second.getEnd().getTime() + (((DailyEvent) second).getRecurrence() * DailyEvent.daysInMilliSeconds);
+            secondEnd = second.getStart().getTime() + (((DailyEvent) second).getRecurrence() * DailyEvent.daysInMilliSeconds);
         else if (second instanceof WeeklyEvent) {
             long limit = ((WeeklyEvent) second).getLimit().getTime();
-            secondEnd = second.getEnd().getTime();
-            while (secondEnd + DailyEvent.daysInMilliSeconds < limit) {
-                secondEnd += DailyEvent.daysInMilliSeconds;
+            secondEnd = second.getStart().getTime();
+            while (secondEnd + DailyEvent.daysInMilliSeconds * 7 < limit) {
+                secondEnd += DailyEvent.daysInMilliSeconds * 7;
             }
         }
 
-        System.out.print(firstEnd);
-        System.out.println("+" + secondEnd);
         return Long.compare(firstEnd, secondEnd);
     }
 }

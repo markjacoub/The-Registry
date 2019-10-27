@@ -69,12 +69,12 @@ public class DailyEvent extends AbstractEvent {
     public String toString() {
         StringBuilder str;
         str = new StringBuilder();
-        String format = "MMM dd, yyyy HH:mm";
+        String format = "MMM dd, yyyy HH:mm"; // Specified Date format for output text
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format, new Locale("en", "EG"));
 
-        String date = simpleDateFormat.format(this.getStart());
+        String date = simpleDateFormat.format(this.getStart()); //Get string representation of event start date
         str.append("Daily Event: {").append("Description= ").append(getDescription()).append(", startTime= ").append(date);
-        date = simpleDateFormat.format(this.getEnd());
+        date = simpleDateFormat.format(this.getEnd()); //get String representation of event
         str.append(", EndTime= ").append(date).append(", numberOdRecurrences= ").append(this.getRecurrence()).append("}");
         return str.toString();
     }

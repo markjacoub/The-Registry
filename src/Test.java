@@ -14,13 +14,18 @@ public class Test {
         Planner p;
         Date input, start, end, limit;
         DateFormat df;
+        Notification notification;
         df = new SimpleDateFormat("MMM d, yyyy", Locale.UK);
         input = df.parse(args[0]);
         p = new Planner(1000);
+        notification = new Notification();
+        p.Subscribe(notification);
+
         limit = Utils.getTime(2019, Calendar.APRIL, 8);
         start = Utils.getTime(2019, Calendar.FEBRUARY, 21, 8, 30);
         end = Utils.getTime(2019, Calendar.FEBRUARY, 21, 22, 0);
         p.addEvent(new DailyEvent("Study Break", start, end, 5));
+
         start = Utils.getTime(2019, Calendar.JANUARY, 6, 8, 30);
         end = Utils.getTime(2019, Calendar.JANUARY, 6, 10, 0);
         p.addEvent(new WeeklyEvent("CSCE 4321 Section B", start, end, limit));
@@ -29,21 +34,29 @@ public class Test {
         start = Utils.getTime(2019, Calendar.JANUARY, 11, 10, 0);
         end = Utils.getTime(2019, Calendar.JANUARY, 11, 11, 30);
         p.addEvent(new WeeklyEvent("CSCE 1521 Section B", start, end, limit));
+
+
+        p.Unsubscribe(notification);
         start = Utils.getTime(2019, Calendar.JANUARY, 6, 13, 0);
         end = Utils.getTime(2019, Calendar.JANUARY, 6, 14, 30);
         p.addEvent(new WeeklyEvent("CSCE 1521 Section A", start, end, limit));
+
         start = Utils.getTime(2019, Calendar.JANUARY, 10, 11, 30);
         end = Utils.getTime(2019, Calendar.JANUARY, 10, 13, 0);
         p.addEvent(new WeeklyEvent("CSCE 1521 Section A", start, end, limit));
+
         start = Utils.getTime(2019, Calendar.JANUARY, 11, 14, 30);
         end = Utils.getTime(2019, Calendar.JANUARY, 11, 17, 30);
         p.addEvent(new WeeklyEvent("CSCE 4321 Section A", start, end, limit));
+
         start = Utils.getTime(2019, Calendar.JANUARY, 6, 14, 30);
         end = Utils.getTime(2019, Calendar.JANUARY, 6, 16, 0);
         p.addEvent(new WeeklyEvent("Office Hours", start, end, limit));
+
         start = Utils.getTime(2019, Calendar.JANUARY, 11, 12, 30);
         end = Utils.getTime(2019, Calendar.JANUARY, 11, 14, 0);
         p.addEvent(new WeeklyEvent("Office Hours", start, end, limit));
+
         start = Utils.getTime(2019, Calendar.APRIL, 11, 9, 30);
         end = Utils.getTime(2019, Calendar.APRIL, 11, 17, 30);
         p.addEvent(new DailyEvent("Examination", start, end, 18));
